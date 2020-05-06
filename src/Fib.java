@@ -15,7 +15,7 @@ public class Fib implements AM{
         } else {
             minimum = 1;
 
-            int numberOfChannels = 2;
+            int numberOfChannels = 1;
             List<point> points = new ArrayList<>();
             List<channel> channels = new ArrayList<>();
 
