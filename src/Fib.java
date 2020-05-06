@@ -27,8 +27,7 @@ public class Fib implements AM{
             for (int i =1; i < ((int) Math.floor(Math.sqrt(n))) + 1; i++) {
                 int reminder = i%numberOfChannels;
 
-                System.out.print("Sending to: ");
-                System.out.println(reminder);
+                System.out.print("Sending number: " + i + " for target number " + n + "to processor " + reminder);
 
 //                channel chan = points.get(reminder).createChannel();
                 points.get(reminder).execute("Fib");
@@ -38,8 +37,8 @@ public class Fib implements AM{
                 long newComputation = channels.get(reminder).readLong();
                 newComputation += 1;
 
-                System.out.print("Received: ");
-                System.out.println(newComputation);
+                System.out.print("Received computation: " + newComputation + " for target number " + n);
+
 
                 if (minimum > newComputation) {
                     minimum = newComputation;
