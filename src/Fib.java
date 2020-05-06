@@ -21,7 +21,7 @@ public class Fib implements AM{
 
             for (int i =0; i<numberOfChannels; i++) {
                 points.add(info.createPoint());
-                channels.add(points.get(i).createChannel());
+//                channels.add(points.get(i).createChannel());
             }
 
             for (int i =1; i < ((int) Math.floor(Math.sqrt(n))) + 1; i++) {
@@ -29,12 +29,13 @@ public class Fib implements AM{
 
                 System.out.println("Sending number: " + i + " for target number " + n + "to processor " + reminder);
 
-//                channel chan = points.get(reminder).createChannel();
+                channel chan = points.get(reminder).createChannel();
                 points.get(reminder).execute("Fib");
-//                chan.write(n-i*i);
-                channels.get(reminder).write(n-i*i);
+                chan.write(n-i*i);
+//                channels.get(reminder).write(n-i*i);
 
-                long newComputation = channels.get(reminder).readLong();
+//                long newComputation = channels.get(reminder).readLong();
+                long newComputation = chan.readLong();
                 newComputation += 1;
 
                 System.out.println("Received computation: " + newComputation + " for target number " + n);
