@@ -38,6 +38,9 @@ public class Fib implements AM{
                 long newComputation = channels.get(reminder).readLong();
                 newComputation += 1;
 
+                System.out.print("Received: ");
+                System.out.println(newComputation);
+
                 if (minimum > newComputation) {
                     minimum = newComputation;
                 }
