@@ -7,6 +7,8 @@ public class Fib implements AM{
     public void run(AMInfo info){
         long n, minimum, r;
         n = info.parent.readLong();
+        System.out.print("Working with: ");
+        System.out.println(n);
 
         if (n == 1) {
             r = 1;
