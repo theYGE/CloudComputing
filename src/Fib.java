@@ -19,24 +19,32 @@ public class Fib implements AM{
             List<point> points = new ArrayList<>();
             List<channel> channels = new ArrayList<>();
 
-            for (int i =0; i<numberOfChannels; i++) {
-                points.add(info.createPoint());
-//                channels.add(points.get(i).createChannel());
-            }
+//            for (int i =0; i<numberOfChannels; i++) {
+//                points.add(info.createPoint());
+////                channels.add(points.get(i).createChannel());
+//            }
 
             for (int i =1; i < ((int) Math.floor(Math.sqrt(n))) + 1; i++) {
                 int reminder = i%numberOfChannels;
 
                 System.out.println("Sending number: " + i + " for target number " + n + "to processor " + reminder);
 
-                channel chan = points.get(reminder).createChannel();
-                points.get(reminder).execute("Fib");
-                chan.write(n-i*i);
-//                channels.get(reminder).write(n-i*i);
+//                channel chan = points.get(reminder).createChannel();
+//                points.get(reminder).execute("Fib");
+//                chan.write(n-i*i);
+////                channels.get(reminder).write(n-i*i);
+//
+////                long newComputation = channels.get(reminder).readLong();
+//                long newComputation = chan.readLong();
+//                newComputation += 1;
 
-//                long newComputation = channels.get(reminder).readLong();
-                long newComputation = chan.readLong();
+                point p1 = info.createPoint();
+                channel c1 = p1.createChannel();
+                p1.execute("Fib");
+                c1.write(n-i*i);
+                long newComputation = c1.readLong();
                 newComputation += 1;
+
 
                 System.out.println("Received computation: " + newComputation + " for target number " + n);
 
