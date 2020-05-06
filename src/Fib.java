@@ -21,7 +21,7 @@ public class Fib implements AM{
 
             for (int i =0; i<numberOfChannels; i++) {
                 points.add(info.createPoint());
-//                channels.add(points.get(i).createChannel());
+                channels.add(points.get(i).createChannel());
             }
 
             for (int i =1; i < ((int) Math.floor(Math.sqrt(n))) + 1; i++) {
