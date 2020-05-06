@@ -21,13 +21,19 @@ public class Fib implements AM{
 
             for (int i =0; i<numberOfChannels; i++) {
                 points.add(info.createPoint());
-                channels.add(points.get(i).createChannel());
+//                channels.add(points.get(i).createChannel());
             }
 
             for (int i =1; i < ((int) Math.floor(Math.sqrt(n))) + 1; i++) {
                 int reminder = i%numberOfChannels;
+
+                System.out.print("Sending to: ");
+                System.out.println(reminder);
+
+                channel chan = points.get(reminder).createChannel();
                 points.get(reminder).execute("Fib");
-                channels.get(reminder).write(n-i*i);
+                chan.write(n-i*i);
+//                channels.get(reminder).write(n-i*i);
 
                 long newComputation = channels.get(reminder).readLong();
                 newComputation += 1;
