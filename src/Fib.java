@@ -34,6 +34,7 @@ public class Fib implements AM{
                     minimum = newComputation;
                 }
             }
+
             r = minimum;
         }
 
