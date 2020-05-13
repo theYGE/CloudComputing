@@ -15,14 +15,14 @@ public class Main {
 
         Scanner sc = new Scanner(new File("input"));
         task curtask = new task();
-        curtask.addJarFile("FindDiv.jar");
+        curtask.addJarFile("PerfectSquares.jar");
         AMInfo info = new AMInfo(curtask, null);
 
         long num = sc.nextLong();
         Range start = null;
         Range last = null;
 
-        System.out.println("Input: " + num);
+        System.out.println("Biggest number to consider: " + num);
 
         for (int i = 2; i < num; i+= MAX_RANGE_SIZE)
         {
@@ -40,13 +40,12 @@ public class Main {
 
         point p = info.createPoint();
         channel c = p.createChannel();
-        p.execute("FindDiv");
+        p.execute("PerfectSquares");
         c.write(start);
         long r = c.readLong();
 
         System.out.println("Waiting for result...");
-//        System.out.println("Result Max: " + (new FindDiv()).run_test(start));
-        System.out.println("Result Max: " + r);
+        System.out.println("Number of perfect squares is: " + r);
 
         curtask.end();
     }

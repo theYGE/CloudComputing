@@ -13,11 +13,11 @@ public class Range implements Serializable {
         this.next = null;
     }
 
-    public long getA() {
+    public long getLeftRange() {
         return a;
     }
 
-    public long getB() {
+    public long getRightRange() {
         return b;
     }
 
