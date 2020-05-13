@@ -1,12 +1,19 @@
 all: run
 
 clean:
-	rm -f src/*.class out/Fibon.jar
+		rm -f out/Main.jar out/FindDiv.jar out/Range.jar
 
-Fibon.jar: out/parcs.jar src/*.java
-	@javac -cp out/parcs.jar src/*.java
-	@jar cf out/Fibon.jar -C src .
-	@rm -f src/*.class
+out/Main.jar: out/parcs.jar src/Main.java src/Range.java
+		@javac -cp out/parcs.jar src/Main.java src/Range.java
+		@jar cf out/Main.jar -C src .
+		@rm -rf src/*.class
 
-run: Fibon.jar
-	@cd out && java -cp 'parcs.jar:Fibon.jar' Fibon
+out/FindDiv.jar: out/parcs.jar src/FindDiv.java src/Range.java
+		@javac -cp out/parcs.jar src/FindDiv.java src/Range.java
+		@jar cf out/FindDiv.jar -C src .
+		@rm -rf src/*.class
+
+build: out/Main.jar out/FindDiv.jar
+
+run: out/Main.jar out/FindDiv.jar
+		@cd out && java -cp 'parcs.jar:Main.jar' Main
